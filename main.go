@@ -14,7 +14,7 @@ import (
 
 func initDatabase() {
 	var err error
-	URI := "postgres://pufttqfdektzqa:e3d39ca00bf8794f743f9d572a3e35762146b9a698080af6f4e6e4ecf663f08c@ec2-44-193-111-218.compute-1.amazonaws.com:5432/dfsrp72rdk52su"
+	URI := os.Getenv("DATABASE_URL")
 
 	database.DatabaseConfig, err = gorm.Open(postgres.Open(URI), &gorm.Config{})
 	if err != nil {
