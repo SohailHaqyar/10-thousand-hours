@@ -40,7 +40,7 @@ func main() {
 	initDatabase()
 	setupRoutes(app)
 
-	app.Listen(port)
+	app.Listen(":" + port)
 	sqldb, _ := database.DatabaseConfig.DB()
 	defer sqldb.Close()
 
