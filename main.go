@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"os"
 
 	"github.com/SohailHaqyar/10-hours/database"
 	"github.com/SohailHaqyar/10-hours/skill"
@@ -32,10 +33,14 @@ func main() {
 
 	app.Use(cors.New())
 
+	port := os.Getenv("PORT")
+
+	fmt.Println("Starting the server on port " + port)
+
 	initDatabase()
 	setupRoutes(app)
 
-	app.Listen(":4000")
+	app.Listen(port)
 	sqldb, _ := database.DatabaseConfig.DB()
 	defer sqldb.Close()
 
